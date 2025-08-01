@@ -16,6 +16,7 @@
 
     body {
       line-height: 1.6;
+      background-color: #f7f7f7;
     }
 
     header {
@@ -44,15 +45,6 @@
       font-weight: 500;
     }
 
-    .login-btn {
-      background-color: #fff;
-      color: #2d3e50;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
     .hero {
       background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');
       background-size: cover;
@@ -75,6 +67,10 @@
     .section {
       padding: 2rem;
       text-align: center;
+      margin: 1.5rem;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
     }
 
     .courses ul {
@@ -84,6 +80,28 @@
 
     .courses li {
       padding: 0.5rem 0;
+    }
+
+    .login-section {
+      padding: 2rem;
+      text-align: center;
+      margin: 2rem auto;
+      background-color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 600px;
+      border-radius: 8px;
+    }
+
+    .login-section a {
+      display: inline-block;
+      background-color: #2d3e50;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 1rem;
     }
 
     footer {
@@ -105,13 +123,18 @@
       <a href="#">Admissions</a>
       <a href="#">Courses</a>
       <a href="#">Achievements</a>
-      <a class="login-btn" href="#">Login</a>
     </nav>
   </header>
 
   <section class="hero">
     <h2>Welcome to <strong>Charis Academy</strong></h2>
     <p>A place where destinies are shaped, minds are molded, and purpose is revealed.</p>
+  </section>
+
+  <section class="login-section">
+    <h3>Student Portal</h3>
+    <p>Already registered? Access your student portal here:</p>
+    <a href="#">Login</a>
   </section>
 
   <section class="section">
@@ -124,7 +147,7 @@
   </section>
 
   <section class="section courses">
-    <h3>Our Courses</h3>
+    <h3>Subjects Offered</h3>
     <ul>
       <li>Mathematics</li>
       <li>English Language</li>
@@ -144,7 +167,7 @@
   </section>
 
   <section class="section achievements">
-    <h3>School Achievements</h3>
+    <h3>Our Achievements</h3>
     <p>
       Charis Academy has consistently ranked among the top secondary schools in the region. Our students have won
       numerous academic competitions, excelled in WAEC and NECO exams, and have been admitted to top universities
