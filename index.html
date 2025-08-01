@@ -1,26 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Charis University</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Roboto', sans-serif;
+    }
+    body {
+      background-color: #f8f9fa;
+      color: #333;
     }
     header {
-      background-color: #2c3e50;
-      color: white;
-      padding: 20px 40px;
+      background-color: #003366;
+      color: #fff;
+      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
+    header h1 {
+      font-size: 24px;
+    }
     nav a {
       color: white;
-      margin: 0 15px;
       text-decoration: none;
+      margin-left: 20px;
       font-weight: bold;
     }
     .hero {
@@ -31,92 +41,104 @@
       text-align: center;
       color: white;
     }
-    .hero h1 {
-      font-size: 48px;
+    .hero h2 {
+      font-size: 36px;
       margin-bottom: 10px;
     }
     .hero p {
-      font-size: 20px;
+      font-size: 18px;
     }
     .cta-button {
       margin-top: 20px;
       padding: 12px 24px;
-      font-size: 18px;
-      background-color: #3498db;
+      font-size: 16px;
+      background-color: #007bff;
       color: white;
       border: none;
       border-radius: 5px;
       text-decoration: none;
     }
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
     .block {
-      padding: 40px 20px;
+      margin-bottom: 40px;
       text-align: center;
-      background-color: #f4f4f4;
     }
-    .courses {
-      padding: 40px 20px;
-      background-color: #ffffff;
-    }
-    .courses h3 {
-      margin-bottom: 20px;
-    }
-    .course-list {
+    .courses ul {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
-      padding: 0;
       list-style-type: none;
+      padding: 0;
     }
-    .course-list li {
-      background: #ecf0f1;
+    .courses li {
+      background-color: #fff;
       padding: 20px;
+      border: 1px solid #ddd;
       border-radius: 8px;
+    }
+    footer {
+      background-color: #003366;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
     }
   </style>
 </head>
 <body>
+
   <header>
-    <div><strong>Charis University</strong></div>
+    <h1>Charis University</h1>
     <nav>
       <a href="#">Home</a>
       <a href="#">About Us</a>
       <a href="#">Admissions</a>
+      <a href="#">Courses</a>
       <a href="#">Contact</a>
-      <a href="#" class="cta-button">Login</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Welcome to Charis University</h1>
+    <h2>Welcome to Charis University</h2>
     <p>A place where destinies are shaped through divine excellence and purpose.</p>
+    <a href="#admission" class="cta-button">Get Started</a>
   </section>
 
-  <section class="block">
-    <h2>Admissions Update</h2>
-    <p><a href="registration.html" class="cta-button">Post UTME / Admission Form is Open</a></p>
-    <p><strong>Masters:</strong> Closed</p>
-    <p><strong>PhD:</strong> Closed</p>
-  </section>
+  <div class="container">
+    <section class="block" id="admission">
+      <h2>Admissions Update</h2>
+      <p><a href="registration.html" class="cta-button">Post UTME / Admission Form is Open</a></p>
+      <p><strong>Masters:</strong> Closed</p>
+      <p><strong>PhD:</strong> Closed</p>
+    </section>
 
-  <section class="courses">
-    <h3>Available Courses</h3>
-    <ul class="course-list">
-      <li>BSc. Computer Science</li>
-      <li>B.Ed. Educational Management</li>
-      <li>BSc. Economics</li>
-      <li>B.A. English and Literary Studies</li>
-      <li>BSc. Political Science</li>
-      <li>B.Ed. Early Childhood Education</li>
-      <li>BSc. Mathematics</li>
-      <li>BSc. Biochemistry</li>
-      <li>BSc. Microbiology</li>
-      <li>BSc. Physics with Electronics</li>
-      <li>B.Ed. Guidance and Counselling</li>
-      <li>B.A. History and International Studies</li>
-      <li>BSc. Accounting</li>
-      <li>BSc. Marketing</li>
-    </ul>
-  </section>
+    <section class="block courses">
+      <h2>Available Courses</h2>
+      <ul>
+        <li>BSc. Computer Science</li>
+        <li>B.Ed. Educational Management</li>
+        <li>BSc. Economics</li>
+        <li>B.A. English and Literary Studies</li>
+        <li>BSc. Political Science</li>
+        <li>B.Ed. Early Childhood Education</li>
+        <li>BSc. Mathematics</li>
+        <li>BSc. Biochemistry</li>
+        <li>BSc. Microbiology</li>
+        <li>BSc. Physics with Electronics</li>
+        <li>B.Ed. Guidance and Counselling</li>
+        <li>B.A. History and International Studies</li>
+        <li>BSc. Accounting</li>
+        <li>BSc. Marketing</li>
+      </ul>
+    </section>
+  </div>
 
+  <footer>
+    &copy; 2025 Charis University. All rights reserved.
+  </footer>
 </body>
 </html>
