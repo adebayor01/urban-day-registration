@@ -5,180 +5,150 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Charis Academy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
 
     body {
-      line-height: 1.6;
-      background-color: #f7f7f7;
+      background-color: #f9f9f9;
+      color: #333;
     }
 
     header {
-      background-color: #2d3e50;
-      padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 1rem 2rem;
+      background-color: #004080;
+      color: white;
       flex-wrap: wrap;
     }
 
-    header h1 {
-      color: #fff;
-      font-size: 1.5rem;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    nav a {
-      color: #fff;
+    .nav-links a {
+      margin: 0 1rem;
+      color: white;
       text-decoration: none;
       font-weight: 500;
     }
 
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
     .hero {
-      background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b');
-      background-size: cover;
-      background-position: center;
-      color: white;
+      background: url('https://images.unsplash.com/photo-1604709177225-055f958d1424') no-repeat center center/cover;
+      height: 75vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      padding: 4rem 2rem;
-    }
-
-    .hero h2 {
-      font-size: 2rem;
-    }
-
-    @media (min-width: 768px) {
-      .hero h2 {
-        font-size: 3rem;
-      }
-    }
-
-    .section {
       padding: 2rem;
-      text-align: center;
-      margin: 1.5rem;
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
     }
 
-    .courses ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    .courses li {
-      padding: 0.5rem 0;
-    }
-
-    .login-section {
-      padding: 2rem;
-      text-align: center;
-      margin: 2rem auto;
-      background-color: white;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      width: 90%;
-      max-width: 600px;
-      border-radius: 8px;
-    }
-
-    .login-section a {
-      display: inline-block;
-      background-color: #2d3e50;
+    .hero h1 {
+      font-size: 3rem;
       color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #f0f0f0;
+      max-width: 700px;
       margin-top: 1rem;
     }
 
-    footer {
-      background-color: #2d3e50;
+    .section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #004080;
+    }
+
+    .card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      background-color: #004080;
       color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 4px;
+      font-weight: bold;
+      text-decoration: none;
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    .login-section {
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
+      padding: 2rem;
+      background-color: #e6f0ff;
+    }
+
+    .login-section a.btn {
+      margin-top: 0;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h1>Charis Academy</h1>
-    <nav>
+    <h2>Charis Academy</h2>
+    <nav class="nav-links">
       <a href="#">Home</a>
       <a href="#">About Us</a>
-      <a href="#">Admissions</a>
-      <a href="#">Courses</a>
-      <a href="#">Achievements</a>
+      <a href="#">Contact</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Welcome to <strong>Charis Academy</strong></h2>
+    <h1>Welcome to Charis Academy</h1>
     <p>A place where destinies are shaped, minds are molded, and purpose is revealed.</p>
   </section>
 
   <section class="login-section">
-    <h3>Student Portal</h3>
-    <p>Already registered? Access your student portal here:</p>
-    <a href="#">Login</a>
+    <h2>Student Portal</h2>
+    <a href="#" class="btn">Login</a>
   </section>
 
   <section class="section">
-    <h3>Admissions</h3>
-    <p>
-      Our Post-UTME form is open.<br />
-      Masters: Closed | PhD: Closed
-    </p>
-    <a href="registration.html">Apply Here</a>
+    <h2>Our Achievements</h2>
+    <div class="card">🏆 National Debate Champions 2023</div>
+    <div class="card">📚 98% Pass Rate in WAEC 2022</div>
+    <div class="card">🌍 Represented Nigeria at International Science Fair</div>
+    <div class="card">🎓 Over 85% of graduates admitted to top universities</div>
+    <div class="card">💡 Innovation Award Winner - 2021</div>
   </section>
-
-  <section class="section courses">
-    <h3>Subjects Offered</h3>
-    <ul>
-      <li>Mathematics</li>
-      <li>English Language</li>
-      <li>Biology</li>
-      <li>Chemistry</li>
-      <li>Physics</li>
-      <li>Geography</li>
-      <li>Economics</li>
-      <li>Literature-in-English</li>
-      <li>Government</li>
-      <li>Christian Religious Studies</li>
-      <li>Agricultural Science</li>
-      <li>Civic Education</li>
-      <li>Commerce</li>
-      <li>Financial Accounting</li>
-    </ul>
-  </section>
-
-  <section class="section achievements">
-    <h3>Our Achievements</h3>
-    <p>
-      Charis Academy has consistently ranked among the top secondary schools in the region. Our students have won
-      numerous academic competitions, excelled in WAEC and NECO exams, and have been admitted to top universities
-      worldwide. With state-of-the-art facilities and a passionate faculty, we prepare every child for a life of
-      purpose, excellence, and leadership.
-    </p>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Charis Academy. All rights reserved.</p>
-  </footer>
 </body>
 
 </html>
