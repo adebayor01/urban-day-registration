@@ -1,37 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Urban Day Grammar School</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background: #f2f2f2;
-            padding: 50px;
-        }
-        h1 {
-            color: #2c3e50;
-        }
-        .apply-btn {
-            background-color: #3498db;
-            color: white;
-            padding: 15px 25px;
-            border: none;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-        .apply-btn:hover {
-            background-color: #2980b9;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charis University</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 20px;
+      text-align: center;
+      color: white;
+    }
+    .hero h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 20px;
+    }
+    .cta-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 18px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .block {
+      padding: 40px 20px;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+    .courses {
+      padding: 40px 20px;
+      background-color: #ffffff;
+    }
+    .courses h3 {
+      margin-bottom: 20px;
+    }
+    .course-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 0;
+      list-style-type: none;
+    }
+    .course-list li {
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Welcome to Urban Day Grammar School</h1>
-    <p>Old Ife Road, Ibadan</p>
-    <br><br>
-    <a href="registration.html" class="apply-btn">📋 Apply Now</a>
+  <header>
+    <div><strong>Charis University</strong></div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Admissions</a>
+      <a href="#">Contact</a>
+      <a href="#" class="cta-button">Login</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Charis University</h1>
+    <p>A place where destinies are shaped through divine excellence and purpose.</p>
+  </section>
+
+  <section class="block">
+    <h2>Admissions Update</h2>
+    <p><a href="registration.html" class="cta-button">Post UTME / Admission Form is Open</a></p>
+    <p><strong>Masters:</strong> Closed</p>
+    <p><strong>PhD:</strong> Closed</p>
+  </section>
+
+  <section class="courses">
+    <h3>Available Courses</h3>
+    <ul class="course-list">
+      <li>BSc. Computer Science</li>
+      <li>B.Ed. Educational Management</li>
+      <li>BSc. Economics</li>
+      <li>B.A. English and Literary Studies</li>
+      <li>BSc. Political Science</li>
+      <li>B.Ed. Early Childhood Education</li>
+      <li>BSc. Mathematics</li>
+      <li>BSc. Biochemistry</li>
+      <li>BSc. Microbiology</li>
+      <li>BSc. Physics with Electronics</li>
+      <li>B.Ed. Guidance and Counselling</li>
+      <li>B.A. History and International Studies</li>
+      <li>BSc. Accounting</li>
+      <li>BSc. Marketing</li>
+    </ul>
+  </section>
+
 </body>
 </html>
