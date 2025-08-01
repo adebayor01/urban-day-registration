@@ -1,144 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Charis University</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Charis Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Poppins', sans-serif;
     }
     body {
-      background-color: #f8f9fa;
+      background: #f4f4f4;
       color: #333;
     }
     header {
-      background-color: #003366;
-      color: #fff;
-      padding: 20px;
+      background: #002147;
+      padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
     }
     header h1 {
-      font-size: 24px;
+      color: #fff;
     }
     nav a {
-      color: white;
-      text-decoration: none;
+      color: #fff;
       margin-left: 20px;
-      font-weight: bold;
+      text-decoration: none;
+      font-weight: 500;
     }
     .hero {
-      background-image: url('https://images.unsplash.com/photo-1588072432836-e10032774350');
-      background-size: cover;
-      background-position: center;
-      padding: 100px 20px;
+      background: url('https://images.unsplash.com/photo-1588072432836-e10032774350') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       color: white;
+      padding: 20px;
     }
     .hero h2 {
-      font-size: 36px;
-      margin-bottom: 10px;
+      font-size: 40px;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px;
+      border-radius: 10px;
     }
-    .hero p {
-      font-size: 18px;
+    .sections {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
     }
-    .cta-button {
-      margin-top: 20px;
-      padding: 12px 24px;
-      font-size: 16px;
-      background-color: #007bff;
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      background: #002147;
       color: white;
-      border: none;
+      padding: 10px 15px;
       border-radius: 5px;
       text-decoration: none;
     }
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .block {
-      margin-bottom: 40px;
-      text-align: center;
-    }
-    .courses ul {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 20px;
-      list-style-type: none;
-      padding: 0;
-    }
-    .courses li {
-      background-color: #fff;
-      padding: 20px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-    }
     footer {
-      background-color: #003366;
+      background: #002147;
       color: white;
       text-align: center;
-      padding: 15px;
-      margin-top: 40px;
+      padding: 20px;
+    }
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 24px;
+      }
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav a {
+        margin: 10px 0 0 0;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Charis University</h1>
+    <h1>Charis Academy</h1>
     <nav>
       <a href="#">Home</a>
-      <a href="#">About Us</a>
-      <a href="#">Admissions</a>
-      <a href="#">Courses</a>
-      <a href="#">Contact</a>
+      <a href="#about">About Us</a>
+      <a href="#courses">Subjects</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#login">Login</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h2>Welcome to Charis University</h2>
-    <p>A place where destinies are shaped through divine excellence and purpose.</p>
-    <a href="#admission" class="cta-button">Get Started</a>
+    <h2>Welcome to Charis Academy — A place where destinies are shaped, minds are molded, and purpose is revealed.</h2>
   </section>
 
-  <div class="container">
-    <section class="block" id="admission">
-      <h2>Admissions Update</h2>
-      <p><a href="registration.html" class="cta-button">Post UTME / Admission Form is Open</a></p>
-      <p><strong>Masters:</strong> Closed</p>
-      <p><strong>PhD:</strong> Closed</p>
-    </section>
-
-    <section class="block courses">
-      <h2>Available Courses</h2>
+  <section class="sections">
+    <div class="card">
+      <h3>Admissions & Entrance Forms</h3>
+      <p>Our Post-UTME and Admission forms are currently open for SS1 and new intakes.</p>
       <ul>
-        <li>BSc. Computer Science</li>
-        <li>B.Ed. Educational Management</li>
-        <li>BSc. Economics</li>
-        <li>B.A. English and Literary Studies</li>
-        <li>BSc. Political Science</li>
-        <li>B.Ed. Early Childhood Education</li>
-        <li>BSc. Mathematics</li>
-        <li>BSc. Biochemistry</li>
-        <li>BSc. Microbiology</li>
-        <li>BSc. Physics with Electronics</li>
-        <li>B.Ed. Guidance and Counselling</li>
-        <li>B.A. History and International Studies</li>
-        <li>BSc. Accounting</li>
-        <li>BSc. Marketing</li>
+        <li>✔️ Admission Form — <a href="registration.html">Apply Now</a></li>
+        <li>❌ Masters Programme — Closed</li>
+        <li>❌ PhD Programme — Closed</li>
       </ul>
-    </section>
-  </div>
+    </div>
+
+    <div class="card" id="courses">
+      <h3>Subjects Offered</h3>
+      <p>Explore our broad range of secondary school subjects to help students excel in all fields:</p>
+      <ul>
+        <li>English Language</li>
+        <li>Mathematics</li>
+        <li>Biology</li>
+        <li>Chemistry</li>
+        <li>Physics</li>
+        <li>Agricultural Science</li>
+        <li>Economics</li>
+        <li>Geography</li>
+        <li>Literature in English</li>
+        <li>Government</li>
+        <li>Christian Religious Studies (CRS)</li>
+        <li>Civic Education</li>
+        <li>Technical Drawing</li>
+        <li>Computer Science</li>
+        <li>Commerce</li>
+        <li>Financial Accounting</li>
+        <li>Yoruba Language</li>
+        <li>French</li>
+      </ul>
+    </div>
+
+    <div class="card" id="achievements">
+      <h3>Our Achievements</h3>
+      <p>Charis Academy continues to set the standard for academic and moral excellence. Here are some of our milestones:</p>
+      <ul>
+        <li>🏆 Best Performing School in WAEC 2024 (Oyo State)</li>
+        <li>💡 95% of our students secured university admissions in 2023</li>
+        <li>🎖 National Award in Mathematics & Science Olympiad</li>
+        <li>🌍 ICT Lab ranked among top 5 in the region</li>
+        <li>✈️ Exchange program partnership with schools in the UK and Canada</li>
+      </ul>
+    </div>
+  </section>
 
   <footer>
-    &copy; 2025 Charis University. All rights reserved.
+    <p>&copy; 2025 Charis Academy. All rights reserved.</p>
   </footer>
 </body>
 </html>
