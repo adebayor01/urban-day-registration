@@ -1,72 +1,145 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Student Registration</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #fff;
-            max-width: 600px;
-            margin: auto;
-            padding: 40px;
-        }
-        h2 {
-            text-align: center;
-            color: #2c3e50;
-        }
-        label {
-            display: block;
-            margin-top: 20px;
-        }
-        input, select {
-            width: 100%;
-            padding: 12px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-        button {
-            background-color: #27ae60;
-            color: white;
-            padding: 14px;
-            width: 100%;
-            margin-top: 30px;
-            border: none;
-            font-size: 16px;
-            border-radius: 6px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Registration – Urban Day Grammar School</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #1a237e;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #1a237e;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3949ab;
+    }
+
+    .success-message {
+      display: none;
+      text-align: center;
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
 </head>
 <body>
+
+  <header>
+    <h1>Urban Day Grammar School</h1>
+    <p>Old Ife Road, Ibadan</p>
+  </header>
+
+  <div class="container">
     <h2>Student Registration Form</h2>
-    <form action="#" method="POST">
-        <label>Full Name</label>
-        <input type="text" name="full_name" required>
+    <form id="registrationForm">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required />
 
-        <label>Gender</label>
-        <select name="gender" required>
-            <option value="">--Select--</option>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select>
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required />
 
-        <label>Date of Birth</label>
-        <input type="date" name="dob" required>
+      <label for="gender">Gender</label>
+      <select id="gender" name="gender" required>
+        <option value="">-- Select --</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+      </select>
 
-        <label>Class Applying For</label>
-        <input type="text" name="class" required>
+      <label for="classLevel">Class Applying For</label>
+      <input type="text" id="classLevel" name="classLevel" placeholder="e.g. JSS1, SSS3" required />
 
-        <label>Parent's Name</label>
-        <input type="text" name="parent_name" required>
+      <label for="parentName">Parent/Guardian Name</label>
+      <input type="text" id="parentName" name="parentName" required />
 
-        <label>Parent's Phone Number</label>
-        <input type="tel" name="phone" required>
+      <label for="parentPhone">Parent Phone Number</label>
+      <input type="tel" id="parentPhone" name="parentPhone" required />
 
-        <label>Email Address</label>
-        <input type="email" name="email">
-
-        <button type="submit">Submit Registration</button>
+      <button type="submit">Submit</button>
     </form>
+
+    <div class="success-message" id="successMessage">
+      🎉 Registration submitted successfully!
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Urban Day Grammar School. All rights reserved.
+  </footer>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // TODO: Add database submission here (Supabase, etc.)
+
+      // Show success message
+      successMessage.style.display = 'block';
+      form.reset();
+
+      // Scroll to message
+      successMessage.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+
 </body>
 </html>
