@@ -123,23 +123,51 @@
     &copy; 2025 Urban Day Grammar School. All rights reserved.
   </footer>
 
-  <script>
-    const form = document.getElementById('registrationForm');
-    const successMessage = document.getElementById('successMessage');
+  <script type="module">
+  const form = document.getElementById('registrationForm');
+  const successMessage = document.getElementById('successMessage');
 
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
+  const SUPABASE_URL = 'https://dlrxxxmiuxpgzjwptitx.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRscnh4eG1pdXhwZ3pqd3B0aXR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQwMDkxNzksImV4cCI6MjA2OTU4NTE3OX0.0T_5e8OHJP0PKKuGJBTCmcp1vsOP2um9GcSbVSLLuLY';
+  const tableName = 'registrations';
 
-      // TODO: Add database submission here (Supabase, etc.)
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
 
-      // Show success message
-      successMessage.style.display = 'block';
-      form.reset();
+    const formData = {
+      full_name: document.getElementById('fullName').value,
+      dob: document.getElementById('dob').value,
+      gender: document.getElementById('gender').value,
+      class_level: document.getElementById('classLevel').value,
+      parent_name: document.getElementById('parentName').value,
+      parent_phone: document.getElementById('parentPhone').value,
+    };
 
-      // Scroll to message
-      successMessage.scrollIntoView({ behavior: 'smooth' });
-    });
-  </script>
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/${tableName}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`,
+          'Prefer': 'return=minimal'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        successMessage.style.display = 'block';
+        form.reset();
+        successMessage.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        alert('❌ Failed to register. Please try again.');
+      }
+    } catch (error) {
+      alert('❌ Error: ' + error.message);
+    }
+  });
+</script>
+  
 
 </body>
 </html>
