@@ -55,30 +55,24 @@
       border-radius: 5px;
       font-size: 16px;
       cursor: pointer;
-      transition: background 0.3s ease;
       position: relative;
     }
 
-    button:disabled {
-      background: #7f8c8d;
-      cursor: not-allowed;
-    }
-
-    button .spinner {
+    .spinner {
       display: none;
-      width: 18px;
-      height: 18px;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
       border: 3px solid #fff;
       border-top: 3px solid transparent;
       border-radius: 50%;
       animation: spin 1s linear infinite;
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
     }
 
-    button.loading .spinner {
+    .loading .spinner {
       display: inline-block;
     }
 
@@ -117,7 +111,7 @@
 
       <button type="submit" id="register-btn">
         Register
-        <span class="spinner" id="spinner"></span>
+        <div class="spinner" id="spinner"></div>
       </button>
     </form>
   </div>
@@ -127,17 +121,19 @@
 
     const supabase = createClient(
       "https://dlrxxxmiuxpgzjwptitx.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsIn..."
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRscnh4eG1pdXhwZ3pqd3B0aXR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQwMDkxNzksImV4cCI6MjA2OTU4NTE3OX0.0T_5e8OHJP0PKKuGJBTCmcp1vsOP2um9GcSbVSLLuLY"
     );
 
     const form = document.getElementById("registration-form");
     const registerBtn = document.getElementById("register-btn");
+    const spinner = document.getElementById("spinner");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      registerBtn.disabled = true;
+      // Start spinner
       registerBtn.classList.add("loading");
+      registerBtn.disabled = true;
 
       const full_name = form.full_name.value;
       const parent_name = form.parent_name.value;
@@ -145,16 +141,16 @@
       const dob = form.dob.value;
       const class_level = form.class_level.value;
 
-      // Save to Supabase
+      // Store in Supabase
       const { error } = await supabase.from("registrations").insert([
         { full_name, parent_name, dob, class_level, parent_email }
       ]);
 
       if (error) {
-        alert("❌ Registration failed. Try again.");
+        alert("❌ Failed to register. Please try again.");
         console.error(error);
-        registerBtn.disabled = false;
         registerBtn.classList.remove("loading");
+        registerBtn.disabled = false;
         return;
       }
 
@@ -178,12 +174,16 @@ We’ll be in touch soon!
 – Charis Admin`
         });
       } catch (err) {
-        console.warn("⚠️ Email failed to send");
+        console.warn("⚠️ Registered but email failed.");
         console.error(err);
       }
 
-      // Final steps
+      // Stop spinner
+      registerBtn.classList.remove("loading");
+      registerBtn.disabled = false;
       form.reset();
+
+      // Success and redirect
       alert("✅ Registration successful!");
       window.location.href = "index.html";
     });
