@@ -56,6 +56,7 @@
       font-size: 16px;
       cursor: pointer;
       transition: background 0.3s ease;
+      position: relative;
     }
 
     button:disabled {
@@ -63,18 +64,27 @@
       cursor: not-allowed;
     }
 
-    button:hover:not(:disabled) {
-      background: #1a252f;
+    button .spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 3px solid #fff;
+      border-top: 3px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
-    .success-message {
-      margin-top: 20px;
-      background: #d4edda;
-      color: #155724;
-      border: 1px solid #c3e6cb;
-      padding: 15px;
-      border-radius: 5px;
-      display: none;
+    button.loading .spinner {
+      display: inline-block;
+    }
+
+    @keyframes spin {
+      0% { transform: translateY(-50%) rotate(0deg); }
+      100% { transform: translateY(-50%) rotate(360deg); }
     }
   </style>
 </head>
@@ -105,12 +115,11 @@
         <option value="SS3">SS3</option>
       </select>
 
-      <button type="submit" id="register-btn">Register</button>
+      <button type="submit" id="register-btn">
+        Register
+        <span class="spinner" id="spinner"></span>
+      </button>
     </form>
-
-    <div class="success-message" id="success-msg">
-      ✅ Registration successful! Redirecting to confirmation page...
-    </div>
   </div>
 
   <script type="module">
@@ -123,12 +132,12 @@
 
     const form = document.getElementById("registration-form");
     const registerBtn = document.getElementById("register-btn");
-    const successMsg = document.getElementById("success-msg");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+
       registerBtn.disabled = true;
-      registerBtn.textContent = "⏳ Registering...";
+      registerBtn.classList.add("loading");
 
       const full_name = form.full_name.value;
       const parent_name = form.parent_name.value;
@@ -136,6 +145,7 @@
       const dob = form.dob.value;
       const class_level = form.class_level.value;
 
+      // Save to Supabase
       const { error } = await supabase.from("registrations").insert([
         { full_name, parent_name, dob, class_level, parent_email }
       ]);
@@ -144,17 +154,19 @@
         alert("❌ Registration failed. Try again.");
         console.error(error);
         registerBtn.disabled = false;
-        registerBtn.textContent = "Register";
+        registerBtn.classList.remove("loading");
         return;
       }
 
-      emailjs.send("service_m4izj4l", "template_vksgma9", {
-        full_name,
-        parent_name,
-        parent_email,
-        dob,
-        class_level,
-        message: `Hello ${parent_name},
+      // Send email
+      try {
+        await emailjs.send("service_m4izj4l", "template_vksgma9", {
+          full_name,
+          parent_name,
+          parent_email,
+          dob,
+          class_level,
+          message: `Hello ${parent_name},
 
 Thank you for registering ${full_name} at Charis Academy.
 
@@ -164,20 +176,16 @@ Date of Birth: ${dob}
 We’ll be in touch soon!
 
 – Charis Admin`
-      })
-      .catch((err) => {
-        console.warn("Email failed to send.");
+        });
+      } catch (err) {
+        console.warn("⚠️ Email failed to send");
         console.error(err);
-      });
+      }
 
-      // ✅ Show success message and redirect
+      // Final steps
       form.reset();
-      successMsg.style.display = "block";
-      registerBtn.style.display = "none";
-
-      setTimeout(() => {
-        window.location.href = "thankyou.html";
-      }, 4000);
+      alert("✅ Registration successful!");
+      window.location.href = "index.html";
     });
   </script>
 </body>
