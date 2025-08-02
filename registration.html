@@ -3,107 +3,114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Charis Academy Registration</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <title>Student Registration | Charis Academy</title>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    emailjs.init("BHDrw5J5gL4vgWtd6");
+  </script>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f2f6fc;
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
       margin: 0;
       padding: 0;
     }
 
     .container {
-      max-width: 500px;
+      max-width: 600px;
       margin: 50px auto;
-      background: #fff;
+      background: white;
       padding: 30px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
       border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     h2 {
       text-align: center;
+      margin-bottom: 20px;
       color: #2c3e50;
     }
 
     label {
       display: block;
-      margin: 15px 0 5px;
-      font-weight: 600;
+      margin-top: 15px;
+      color: #333;
     }
 
     input, select {
       width: 100%;
       padding: 10px;
+      margin-top: 5px;
       border-radius: 5px;
       border: 1px solid #ccc;
     }
 
     button {
       width: 100%;
+      margin-top: 25px;
       padding: 12px;
-      background-color: #2c3e50;
+      background: #2c3e50;
       color: white;
       border: none;
       border-radius: 5px;
       font-size: 16px;
-      margin-top: 20px;
       cursor: pointer;
+      transition: background 0.3s ease;
     }
 
-    button:hover {
-      background-color: #34495e;
+    button:disabled {
+      background: #7f8c8d;
+      cursor: not-allowed;
     }
 
-    .success, .error {
-      text-align: center;
-      margin-top: 15px;
-      font-weight: bold;
+    button:hover:not(:disabled) {
+      background: #1a252f;
     }
 
-    .success {
-      color: green;
-    }
-
-    .error {
-      color: red;
+    .success-message {
+      margin-top: 20px;
+      background: #d4edda;
+      color: #155724;
+      border: 1px solid #c3e6cb;
+      padding: 15px;
+      border-radius: 5px;
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Student Registration</h2>
+    <h2>Charis Academy Student Registration</h2>
     <form id="registration-form">
-      <label for="full_name">Student's Full Name</label>
-      <input type="text" id="full_name" name="full_name" required />
+      <label for="full_name">Student Full Name</label>
+      <input type="text" name="full_name" id="full_name" required />
 
-      <label for="parent_name">Parent's Full Name</label>
-      <input type="text" id="parent_name" name="parent_name" required />
+      <label for="parent_name">Parent/Guardian Name</label>
+      <input type="text" name="parent_name" id="parent_name" required />
 
-      <label for="parent_email">Parent's Email</label>
-      <input type="email" id="parent_email" name="parent_email" required />
+      <label for="parent_email">Parent Email</label>
+      <input type="email" name="parent_email" id="parent_email" required />
 
       <label for="dob">Date of Birth</label>
-      <input type="date" id="dob" name="dob" required />
+      <input type="date" name="dob" id="dob" required />
 
       <label for="class_level">Class Level</label>
-      <select id="class_level" name="class_level" required>
-        <option value="">-- Select Class --</option>
-        <option value="JSS 1">JSS 1</option>
-        <option value="JSS 2">JSS 2</option>
-        <option value="JSS 3">JSS 3</option>
-        <option value="SSS 1">SSS 1</option>
-        <option value="SSS 2">SSS 2</option>
-        <option value="SSS 3">SSS 3</option>
+      <select name="class_level" id="class_level" required>
+        <option value="">--Select--</option>
+        <option value="JSS1">JSS1</option>
+        <option value="JSS2">JSS2</option>
+        <option value="JSS3">JSS3</option>
+        <option value="SS1">SS1</option>
+        <option value="SS2">SS2</option>
+        <option value="SS3">SS3</option>
       </select>
 
-      <button type="submit">Submit Registration</button>
+      <button type="submit" id="register-btn">Register</button>
     </form>
 
-    <div id="status" class="success" style="display:none;"></div>
-    <div id="error" class="error" style="display:none;"></div>
+    <div class="success-message" id="success-msg">
+      ✅ Registration successful! Redirecting to confirmation page...
+    </div>
   </div>
 
   <script type="module">
@@ -111,39 +118,36 @@
 
     const supabase = createClient(
       "https://dlrxxxmiuxpgzjwptitx.supabase.co",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRscnh4eG1pdXhwZ3pqd3B0aXR4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQwMDkxNzksImV4cCI6MjA2OTU4NTE3OX0.0T_5e8OHJP0PKKuGJBTCmcp1vsOP2um9GcSbVSLLuLY"
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsIn..."
     );
 
-    emailjs.init("BHDrw5J5gL4vgWtd6");
-
     const form = document.getElementById("registration-form");
-    const statusMsg = document.getElementById("status");
-    const errorMsg = document.getElementById("error");
+    const registerBtn = document.getElementById("register-btn");
+    const successMsg = document.getElementById("success-msg");
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      statusMsg.style.display = "none";
-      errorMsg.style.display = "none";
+      registerBtn.disabled = true;
+      registerBtn.textContent = "⏳ Registering...";
 
-      const full_name = form.full_name.value.trim();
-      const parent_name = form.parent_name.value.trim();
-      const parent_email = form.parent_email.value.trim();
+      const full_name = form.full_name.value;
+      const parent_name = form.parent_name.value;
+      const parent_email = form.parent_email.value;
       const dob = form.dob.value;
       const class_level = form.class_level.value;
 
-      // Supabase insert
       const { error } = await supabase.from("registrations").insert([
-        { full_name, parent_name, parent_email, dob, class_level }
+        { full_name, parent_name, dob, class_level, parent_email }
       ]);
 
       if (error) {
-        errorMsg.innerText = "❌ Registration failed. Please try again.";
-        errorMsg.style.display = "block";
+        alert("❌ Registration failed. Try again.");
         console.error(error);
+        registerBtn.disabled = false;
+        registerBtn.textContent = "Register";
         return;
       }
 
-      // EmailJS send
       emailjs.send("service_m4izj4l", "template_vksgma9", {
         full_name,
         parent_name,
@@ -159,18 +163,21 @@ Date of Birth: ${dob}
 
 We’ll be in touch soon!
 
-– Charis Academy Admin`
-      })
-      .then(() => {
-        statusMsg.innerText = "✅ Registration successful! Confirmation email sent.";
-        statusMsg.style.display = "block";
-        form.reset();
+– Charis Admin`
       })
       .catch((err) => {
-        statusMsg.innerText = "✅ Registered, but email could not be sent.";
-        statusMsg.style.display = "block";
+        console.warn("Email failed to send.");
         console.error(err);
       });
+
+      // ✅ Show success message and redirect
+      form.reset();
+      successMsg.style.display = "block";
+      registerBtn.style.display = "none";
+
+      setTimeout(() => {
+        window.location.href = "thankyou.html";
+      }, 4000);
     });
   </script>
 </body>
